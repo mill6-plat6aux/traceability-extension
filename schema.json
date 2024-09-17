@@ -1,0 +1,154 @@
+{
+  "title": "ProductFootprintFragment",
+  "type": "object",
+  "description": "Represent the product footprint of upstream companies that are a breakdown of their own product footprint.",
+  "examples": [
+    {
+      "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08"
+    },
+    {
+      "productCategoryCpc": "43112",
+      "pcf": {
+        "declaredUnit": "kilogram",
+        "pCfExcludingBiogenic": "2.324",
+        "pCfIncludingBiogenic": "2.754",
+        "dqi": {
+          "coveragePercent": 80,
+          "technologicalDQR": 3,
+          "temporalDQR": 2,
+          "geographicalDQR": 1,
+          "completenessDQR": 2,
+          "reliabilityDQR": 2
+        }
+      }
+    }
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "validityPeriodStart": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "validityPeriodEnd": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "companyName": {
+      "type": "string"
+    },
+    "companyIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^urn:[a-zA-Z0-9]+([-a-zA-Z0-9]*){0,30}[a-zA-Z0-9]+:[-\\._~%!$&'\\(\\)*+,;:@=a-zA-Z0-9]*[-\\._~%!$&'\\(\\)*+,;:@=/?a-zA-Z0-9]*$"
+      }
+    },
+    "productDescription": {
+      "type": "string"
+    },
+    "productIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^urn:[a-zA-Z0-9]+([-a-zA-Z0-9]*){0,30}[a-zA-Z0-9]+:[-\\._~%!$&'\\(\\)*+,;:@=a-zA-Z0-9]*[-\\._~%!$&'\\(\\)*+,;:@=/?a-zA-Z0-9]*$"
+      }
+    },
+    "productCategoryCpc": {
+      "type": "string",
+      "pattern": "^[0-9]{1,7}$"
+    },
+    "productNameCompany": {
+      "type": "string"
+    },
+    "pcf": {
+      "type": "object",
+      "properties": {
+        "declaredUnit": {
+          "type": "string",
+          "enum": [
+            "liter",
+            "kilogram",
+            "cubic meter",
+            "kilowatt hour",
+            "megajoule",
+            "ton kilometer",
+            "square meter"
+          ]
+        },
+        "pCfExcludingBiogenic": {
+          "type": "string",
+          "pattern": "^[0-9]+(\\.[0-9]+)*$"
+        },
+        "pCfIncludingBiogenic": {
+          "type": "string",
+          "pattern": "^[0-9]+(\\.[0-9]+)*$"
+        },
+        "referencePeriodStart": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "referencePeriodEnd": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "primaryDataShare": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "dqi": {
+          "type": "object",
+          "properties": {
+            "coveragePercent": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "technologicalDQR": {
+              "type": "number",
+              "minimum": 1,
+              "maximum": 3
+            },
+            "temporalDQR": {
+              "type": "number",
+              "minimum": 1,
+              "maximum": 3
+            },
+            "geographicalDQR": {
+              "type": "number",
+              "minimum": 1,
+              "maximum": 3
+            },
+            "completenessDQR": {
+              "type": "number",
+              "minimum": 1,
+              "maximum": 3
+            },
+            "reliabilityDQR": {
+              "type": "number",
+              "minimum": 1,
+              "maximum": 3
+            }
+          }
+        }
+      }
+    },
+    "breakdownPfs": {
+      "type": "array",
+      "items": {
+        "$ref": "#"
+      }
+    }
+  }
+}
